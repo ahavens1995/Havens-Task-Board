@@ -56,11 +56,11 @@
               <div class="row gx-5">
                 <!--Task Title Input-->
                 <div class="col-md-6">
-                  <input type="text" class="task-title" placeholder="Title" aria-label="Title..." aria-describedby="basic-addon1">
+                  <input type="text" class="task-title" name="task-title" placeholder="Title" aria-label="Title..." aria-describedby="basic-addon1">
                 </div>
                 <!--Task Due Date Input-->
                 <div class="col-md-6">
-                  <input type="text" id="datepicker">
+                  <input type="text" id="datepicker" name="datepicker">
                 </div>
               </div>
 
@@ -73,13 +73,13 @@
               <!-- Task Description Input-->
               <div class="row gx-5">
                 <div class="col-md-12">
-                  <textarea class="form-control" aria-label="With Textarea"></textarea>
+                  <textarea class="form-control" id="task-description" name="task-desc" aria-label="With Textarea"></textarea>
                 </div>
               </div>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-success" data-bs-dismiss="modal">Add Task</button>
+            <button type="button" class="btn btn-success" id="add-task" data-bs-dismiss="modal">Add Task</button>
             <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
           </div>
         </div>
