@@ -2,6 +2,11 @@
 let taskList = JSON.parse(localStorage.getItem("tasks"));
 let nextId = JSON.parse(localStorage.getItem("nextId"));
 
+// Grab the ID's of the cards
+const todoEl = $('#todo-cards');
+const inProgEl = $('#in-progress-cards');
+const doneEl = $('#done-cards');
+
 // Create an array of Tasks
 let taskArray = new Array();
 
@@ -16,7 +21,6 @@ const taskDescEl = $('#task-description');
 // Todo: create a function to generate a unique task id
 function generateTaskId() {
     //Once a card is generated, we want to assign it to the next ID available in local storage
-    //grab the nextID from storage, we start at 0 and go to one
     
     //If nextId is null, return 0 and set the nextId at 1
     if(nextId === null){
@@ -33,6 +37,7 @@ function generateTaskId() {
 // Todo: create a function to create a task card
 function createTaskCard(task) {
 
+
 }
 
 // Todo: create a function to render the task list and make cards draggable
@@ -42,13 +47,6 @@ function renderTaskList() {
 
 // Todo: create a function to handle adding a new task
 function handleAddTask(event){
-    // Give the task:
-    // * title pulled from the input
-    // * description
-    // * a unique ID
-    // * assign it a due date
-    // * color it based on how many days are left till due
-
     // Prevent that page from reloading
     event.preventDefault();
 
@@ -69,6 +67,12 @@ function handleAddTask(event){
         return;
     }
 
+    // Give the task:
+    //  * title pulled from the input
+    //  * assign it a due date
+    //  * description
+    //  * a unique ID
+    //  * Task Status
     const formInput = {
         taskTitle: titleInput,
         dueDate: dateInput,
@@ -87,8 +91,16 @@ function handleAddTask(event){
         taskArray = [formInput];
     }
     
-
+    // Store the tasks in the local array
     localStorage.setItem('tasks', JSON.stringify(taskArray));
+
+    // Clear the form inputs
+    $('input[name="task-title"]').val('');
+    $('input[name="datepicker"]').val('');
+    $('#task-description').val('');
+
+    // Once data is stored, create a task card
+    createTaskCard(formInput);
 
 }
 
@@ -116,6 +128,7 @@ $(document).ready(function () {
 
 });
 
+// jQuery function for the datepicker
 $( function() {
     $( "#datepicker" ).datepicker();
   } );
